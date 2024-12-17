@@ -1,40 +1,77 @@
-# Welcome to Remix!
+# Welcome to React Router!
 
-- 📖 [Remix docs](https://remix.run/docs)
+A modern, production-ready template for building full-stack React applications using React Router.
 
-## Development
+## Features
 
-Run the dev server:
+- 🚀 Server-side rendering
+- ⚡️ Hot Module Replacement (HMR)
+- 📦 Asset bundling and optimization
+- 🔄 Data loading and mutations
+- 🔒 TypeScript by default
+- 🎉 TailwindCSS for styling
+- 📖 [React Router docs](https://reactrouter.com/)
 
-```shellscript
-bun run dev
+## Getting Started
+
+### Installation
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+### Development
+
+Run an initial database migration:
+
+```bash
+npm run db:migrate
+```
+
+Start the development server with HMR:
+
+```bash
+npm run dev
+```
+
+Your application will be available at `http://localhost:5173`.
+
+## Building for Production
+
+Create a production build:
+
+```bash
+npm run build
 ```
 
 ## Deployment
 
-First, build your app for production:
+Deployment is done using the Wrangler CLI.
+
+To deploy directly to production:
 
 ```sh
-bun run build
+npx wrangler deploy
 ```
 
-Then run the app in production mode:
+To deploy a preview URL:
 
 ```sh
-bun start
+npx wrangler versions upload
 ```
 
-Now you'll need to pick a host to deploy it to.
+You can then promote a version to production after verification or roll it out progressively.
 
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `bun run build`
-
-- `build/server`
-- `build/client`
+```sh
+npx wrangler versions deploy
+```
 
 ## Styling
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+
+---
+
+Built with ❤️ using React Router.
