@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link } from '@remix-run/react';
+import { Link, useLocation } from '@remix-run/react';
+import { ModeToggle } from '@/components/theme/ModeToggle';
 import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { HEADER_HEIGHT } from '@/constants/indes';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const { state } = useLocation();
+
+  useEffect(() => {
+    if (state?.hash) {
+      setActiveSection(state.hash);
+    }
+  }, [state]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -20,22 +30,31 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-40 bg-white shadow-lg dark:bg-gray-800">
       <div
-        className={`mx-auto flex h-[6rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8`}
+        className={`mx-auto flex max-w-7xl items-center justify-between px-4 h-[${HEADER_HEIGHT}rem] sm:px-6 lg:px-8`}
       >
         <div className="flex items-center gap-4">
-          <Link to="/" className="flex-shrink-0"></Link>
+          <Link to="/" className="flex-shrink-0">
+            <Avatar className="my-4">
+              <AvatarImage src="/logo.png" alt="SC" />
+              <AvatarFallback>SC</AvatarFallback>
+            </Avatar>
+          </Link>
           <span className="text-2xl font-bold text-gray-800 dark:text-white">Sviatoslav Chyzh</span>
         </div>
         <div className="hidden md:block">
           <div className="ml-10 flex items-center gap-10 space-x-4">
             <div className="flex gap-2">
               {menuItems.map((item) => (
-                <Link to={item.href} key={item.name}>
+                <Link
+                  to={item.href}
+                  key={item.name}
+                  className={`rounded-md p-4 hover:cursor-pointer ${item.href === activeSection ? 'bg-primary text-white' : ''}`}
+                >
                   {item.name}
                 </Link>
               ))}
             </div>
-            <ThemeToggle />
+            <ModeToggle />
           </div>
         </div>
         <div className="-mr-2 flex md:hidden">
@@ -62,7 +81,7 @@ export default function Navbar() {
           </div>
           <div className="px-4 py-3">
             <div className="flex items-center justify-center space-x-2">
-              <ThemeToggle />
+              <ModeToggle />
             </div>
           </div>
         </div>
