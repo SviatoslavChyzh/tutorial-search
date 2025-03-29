@@ -1,5 +1,5 @@
 import { createThemeSessionResolver } from 'remix-themes';
-import { createCookieSessionStorage } from 'react-router';
+import { createCookieSessionStorage } from '@remix-run/cloudflare';
 
 // You can default to 'development' if process.env.NODE_ENV is not set
 const isProduction = false;
