@@ -1,20 +1,15 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-import { Button } from '@mui/material';
+import RouterRootProvider from '@/providers/RouterProvider';
+import SWRConfigProvider from '@/providers/SWRConfigProvider';
+import ThemeAppProvider from '@/providers/ThemeProvider';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    setCount(1);
-  }, []);
-
   return (
-    <>
-      {count}
-      <br />
-      <Button variant="contained">Hello world</Button>
-    </>
+    <SWRConfigProvider>
+      <ThemeAppProvider>
+        <RouterRootProvider />
+      </ThemeAppProvider>
+    </SWRConfigProvider>
   );
 }
 

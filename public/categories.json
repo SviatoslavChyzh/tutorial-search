@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": 4321,
+      "name": "Web Development",
+      "type": "platform"
+    },
+    {
+      "id": 8732,
+      "name": "Remix",
+      "type": "framework"
+    },
+    {
+      "id": 1234,
+      "name": "React",
+      "type": "library"
+    }
+  ]
+}

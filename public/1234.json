@@ -1,0 +1,13 @@
+{
+  "data": {
+    "id": 1234,
+    "title": "Getting Started with React",
+    "description": "Learn the basics of React, a popular JavaScript library for building user interfaces.",
+    "link": "https://reactjs.org/docs/getting-started.html",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Frontend"
+    ]
+  }
+}

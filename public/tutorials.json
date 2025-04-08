@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": 1234,
+      "title": "Getting Started with React",
+      "description": "Learn the basics of React, a popular JavaScript library for building user interfaces.",
+      "link": "https://reactjs.org/docs/getting-started.html",
+      "tags": [
+        "React",
+        "JavaScript",
+        "Frontend"
+      ]
+    },
+    {
+      "id": 5678,
+      "title": "Understanding Redux",
+      "description": "A comprehensive guide to understanding Redux, a state management library for JavaScript applications.",
+      "link": "https://redux.js.org/introduction/getting-started",
+      "tags": [
+        "Redux",
+        "JavaScript",
+        "State Management"
+      ]
+    },
+    {
+      "id": 91011,
+      "title": "Building RESTful APIs with Express",
+      "description": "Learn how to build RESTful APIs using Express, a minimal and flexible Node.js web application framework.",
+      "link": "https://expressjs.com/en/starter/installing.html",
+      "tags": [
+        "Express",
+        "Node.js",
+        "Backend"
+      ]
+    }
+  ]
+}`
