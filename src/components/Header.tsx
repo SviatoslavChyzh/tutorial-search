@@ -5,21 +5,21 @@ import {
   IconButton,
   Toolbar,
   Typography,
-  useColorScheme,
+  // useColorScheme,
 } from '@mui/material';
-import LightModeIcon from '@mui/icons-material/LightModeRounded';
-import DarkModeIcon from '@mui/icons-material/DarkModeRounded';
+// import LightModeIcon from '@mui/icons-material/LightModeRounded';
+// import DarkModeIcon from '@mui/icons-material/DarkModeRounded';
 import { Link } from 'react-router';
 
 export default function Header() {
-  const { mode, systemMode, setMode } = useColorScheme();
-  const darkMode = false;
+  // const { mode, systemMode, setMode } = useColorScheme();
+  // const darkMode = false;
 
-  const resolvedMode = (systemMode || mode) as 'light' | 'dark';
-  const icon = {
-    light: <LightModeIcon />,
-    dark: <DarkModeIcon />,
-  }[resolvedMode];
+  // const resolvedMode = (systemMode || mode) as 'light' | 'dark';
+  // const icon = {
+  //   light: <LightModeIcon />,
+  //   dark: <DarkModeIcon />,
+  // }[resolvedMode];
 
   return (
     <AppBar position="fixed">
@@ -27,7 +27,7 @@ export default function Header() {
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-              Tutorial Search
+              Tutorials Search
             </Link>
           </Typography>
           <Box sx={{ display: 'flex', gap: 2 }}>
@@ -44,14 +44,14 @@ export default function Header() {
                 </IconButton>
               </Box>
             </Link>
-            <Box sx={{ border: '1px solid', borderRadius: 2 }}>
-              <IconButton
-                data-screenshot="toggle-mode"
-                onClick={() => setMode(darkMode ? 'light' : 'dark')}
-              >
-                {icon}
-              </IconButton>
-            </Box>
+            {/*<Box sx={{ border: '1px solid', borderRadius: 2 }}>*/}
+            {/*  <IconButton*/}
+            {/*    data-screenshot="toggle-mode"*/}
+            {/*    onClick={() => setMode(darkMode ? 'light' : 'dark')}*/}
+            {/*  >*/}
+            {/*    {icon}*/}
+            {/*  </IconButton>*/}
+            {/*</Box>*/}
           </Box>
         </Toolbar>
       </Container>

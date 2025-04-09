@@ -35,62 +35,66 @@ export default function TutorialsDetails() {
 
   return (
     <Container>
-      <Box sx={{ my: 4 }}>
+      <Box sx={{ my: 2 }}>
         <Button startIcon={<ArrowBack />} onClick={() => navigate(-1)} sx={{ mb: 2 }}>
           Back to search
         </Button>
-        <Paper elevation={2} sx={{ p: 0, borderRadius: 2, overflow: 'hidden' }}>
-          <Box sx={{ width: '100%', height: 0, paddingBottom: '56.25%', position: 'relative' }}>
-            <iframe
-              src={tutorial.url}
-              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title={tutorial.title}
-            />
-          </Box>
-
-          <Box sx={{ p: 4 }}>
-            <Typography variant="h4" component="h1" gutterBottom>
-              {tutorial.title}
-            </Typography>
-
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, flexWrap: 'wrap', gap: 2 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Person sx={{ mr: 1, color: 'text.secondary' }} />
-                <Typography variant="body1">{tutorial.author}</Typography>
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <AccessTime sx={{ mr: 1, color: 'text.secondary' }} />
-                <Typography variant="body1">{tutorial.videoDuration}</Typography>
-              </Box>
+        <Container sx={{ width: '80%' }}>
+          <Paper elevation={2} sx={{ p: 0, borderRadius: 2, overflow: 'hidden' }}>
+            <Box sx={{ width: '100%', height: 0, paddingBottom: '56.25%', position: 'relative' }}>
+              <iframe
+                src={tutorial.url}
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={tutorial.title}
+              />
             </Box>
 
-            <Stack direction="row" spacing={1} sx={{ mb: 3 }} flexWrap="wrap" gap={1}>
-              {tutorial.language && <Chip label={tutorial.language} size="small" color="primary" />}
-              {tutorial.framework && (
-                <Chip label={tutorial.framework} size="small" color="secondary" />
-              )}
-              {tutorial.library && <Chip label={tutorial.library} size="small" color="info" />}
-            </Stack>
+            <Box sx={{ p: 4 }}>
+              <Typography variant="h4" component="h1" gutterBottom>
+                {tutorial.title}
+              </Typography>
 
-            <Divider sx={{ my: 3 }} />
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, flexWrap: 'wrap', gap: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Person sx={{ mr: 1, color: 'text.secondary' }} />
+                  <Typography variant="body1">{tutorial.author}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <AccessTime sx={{ mr: 1, color: 'text.secondary' }} />
+                  <Typography variant="body1">{tutorial.videoDuration}</Typography>
+                </Box>
+              </Box>
 
-            <Typography variant="body1">{tutorial.description}</Typography>
+              <Stack direction="row" spacing={1} sx={{ mb: 3 }} flexWrap="wrap" gap={1}>
+                {tutorial.language && (
+                  <Chip label={tutorial.language} size="small" color="primary" />
+                )}
+                {tutorial.framework && (
+                  <Chip label={tutorial.framework} size="small" color="secondary" />
+                )}
+                {tutorial.library && <Chip label={tutorial.library} size="small" color="info" />}
+              </Stack>
 
-            <Button
-              variant="outlined"
-              color="primary"
-              href={tutorial.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{ mt: 2 }}
-            >
-              Watch on YouTube
-            </Button>
-          </Box>
-        </Paper>
+              <Divider sx={{ my: 2 }} />
+
+              <Typography variant="body1">{tutorial.description}</Typography>
+
+              <Button
+                variant="outlined"
+                color="primary"
+                href={tutorial.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ mt: 2 }}
+              >
+                Watch on YouTube
+              </Button>
+            </Box>
+          </Paper>
+        </Container>
       </Box>
     </Container>
   );
