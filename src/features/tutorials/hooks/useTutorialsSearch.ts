@@ -2,7 +2,7 @@ import { useMachine } from '@xstate/react';
 import { tutorialsMachine } from '../machines/tutorialsMachine';
 import { useTutorials } from '@/features/tutorials/api/useTutorials';
 import { useEffect } from 'react';
-import { TutorialSearch } from '@/features/tutorials/schemas/tutorials';
+import { TutorialFilters } from '@/features/tutorials/schemas/tutorials';
 
 export function useTutorialsSearch() {
   const [state, send] = useMachine(tutorialsMachine);
@@ -18,7 +18,7 @@ export function useTutorialsSearch() {
     }
   }, [tutorials, isLoading, isError, error, send, state]);
 
-  const searchTutorials = (filters: TutorialSearch) => {
+  const searchTutorials = (filters: TutorialFilters) => {
     send({ type: 'SEARCH', filters });
   };
 

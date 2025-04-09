@@ -5,7 +5,6 @@ export default function SWRConfigProvider({ children }: PropsWithChildren) {
   return (
     <SWRConfig
       value={{
-        fallbackData: 'fallback',
         revalidateOnMount: false,
         revalidateOnFocus: false,
         revalidateIfStale: false,

@@ -1,17 +1,5 @@
 import { z } from 'zod';
 
-export const tutorialsSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  description: z.string(),
-  url: z.string().url(),
-  createdAt: z.string().datetime(),
-  thumbnailUrl: z.string().url(),
-  videoDuration: z.string(),
-  creatorName: z.string(),
-  language: z.string(),
-});
-
 export const categorySchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -24,7 +12,20 @@ export const categorySchema = z.object({
   ]),
 });
 
-export const tutorialSearchSchema = z.object({
+export const tutorialsSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string(),
+  url: z.string().url(),
+  createdAt: z.string().datetime(),
+  thumbnailUrl: z.string().url(),
+  videoDuration: z.string(),
+  creatorName: z.string(),
+  language: z.string(),
+  categories: z.array(categorySchema),
+});
+
+export const tutorialFiltersSchema = z.object({
   query: z.string(),
   languages: z.array(z.string()),
   frameworks: z.array(z.string()),
@@ -33,4 +34,4 @@ export const tutorialSearchSchema = z.object({
 
 export type Tutorial = z.infer<typeof tutorialsSchema>;
 export type Category = z.infer<typeof categorySchema>;
-export type TutorialSearch = z.infer<typeof tutorialSearchSchema>;
+export type TutorialFilters = z.infer<typeof tutorialFiltersSchema>;

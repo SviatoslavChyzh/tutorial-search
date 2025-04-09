@@ -1,11 +1,22 @@
-import { useTutorialsSearch } from '@/features/tutorials/hooks/useTutorialsSearch';
 import { Alert, Box, CircularProgress, Container, Typography } from '@mui/material';
 import SearchFiltersComponent from './SearchFilters';
 import TutorialsList from './TutorialsList';
+import { useTutorials } from '@/features/tutorials/api/useTutorials';
+import { useState } from 'react';
+import { TutorialFilters } from '../schemas/tutorials';
 
 export default function TutorialsSearch() {
-  const { tutorials, filters, status, error, searchTutorials, resetSearch, isLoading } =
-    useTutorialsSearch();
+  const [filters, setFilters] = useState<TutorialFilters>({
+    query: '',
+    languages: [],
+    frameworks: [],
+    libraries: [],
+  });
+  const { tutorials, isLoading, isError, error } = useTutorials(filters);
+
+  function searchTutorials(filters: TutorialFilters) {
+    setFilters(filters);
+  }
 
   return (
     <Container maxWidth="lg">
@@ -17,25 +28,24 @@ export default function TutorialsSearch() {
         <SearchFiltersComponent
           initialFilters={filters}
           onSearch={searchTutorials}
-          onReset={resetSearch}
           isLoading={isLoading}
         />
 
-        {status === 'loading' && (
+        {isLoading && (
           <Box sx={{ display: 'flex', justifyContent: 'center', p: 4 }}>
             <CircularProgress />
           </Box>
         )}
 
-        {status === 'error' && (
+        {isError && (
           <Alert severity="error" sx={{ mb: 3 }}>
             {error || 'An error occurred while fetching tutorials.'}
           </Alert>
         )}
 
-        {status === 'success' && <TutorialsList tutorials={tutorials} />}
+        {tutorials && <TutorialsList tutorials={tutorials} />}
 
-        {status === 'idle' && (
+        {tutorials.length === 0 && (
           <Box sx={{ p: 4, textAlign: 'center' }}>
             <Typography variant="body1">Use the filters above to search for tutorials.</Typography>
           </Box>

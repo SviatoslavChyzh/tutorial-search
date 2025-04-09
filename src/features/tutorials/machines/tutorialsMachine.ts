@@ -1,10 +1,53 @@
-import { assign, createMachine } from 'xstate';
+import { assign, setup } from 'xstate';
+import { Tutorial } from '@/features/tutorials/schemas/tutorials';
 
-export const tutorialsMachine = createMachine({
+export type SearchInputMachineEvent =
+  | {
+      type: 'IDLE';
+    }
+  | {
+      type: 'CHANGE';
+      value: string;
+    }
+  | {
+      type: 'BLUR';
+    }
+  | {
+      type: 'FOCUS';
+    }
+  | {
+      type: 'DISABLE';
+    }
+  | {
+      type: 'ENABLE';
+    }
+  | {
+      type: 'REPORT_INVALID';
+      reason: string;
+    };
+
+export type SearchInputMachineState = {
+  status: 'IDLE' | 'LOADING' | 'SUCCESS' | 'ERROR';
+  tutorials: Array<Tutorial>;
+  filters: {
+    query: string;
+    languages: Array<string>;
+    frameworks: Array<string>;
+    libraries: Array<string>;
+  };
+  error: string | null;
+};
+
+export const tutorialsMachine = setup({
+  types: {
+    context: {} as SearchInputMachineState,
+    events: {} as SearchInputMachineEvent,
+  },
+}).createMachine({
   id: 'tutorials',
-  initial: 'idle',
+  initial: 'IDLE',
   context: {
-    status: 'idle',
+    status: 'IDLE',
     tutorials: [],
     filters: {
       query: '',
@@ -12,19 +55,20 @@ export const tutorialsMachine = createMachine({
       frameworks: [],
       libraries: [],
     },
+    error: null,
   },
   states: {
     idle: {
       on: {
         SEARCH: {
-          target: 'loading',
+          target: 'searching',
           actions: assign({
-            filters: (_, event) => event.filters,
+            filters: (_, event: { filters: typeof context.filters } | undefined) => event.filters,
           }),
         },
       },
     },
-    loading: {
+    searching: {
       on: {
         STOP_TUTORIAL: 'idle',
       },

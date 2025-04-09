@@ -1,4 +1,4 @@
-import { TutorialSearch } from '@/features/tutorials/schemas/tutorials';
+import { TutorialFilters } from '@/features/tutorials/schemas/tutorials';
 import {
   Autocomplete,
   Box,
@@ -16,23 +16,21 @@ const FRAMEWORKS = ['React', 'Vue', 'Angular', 'Next.js', 'Express', 'Django', '
 const LIBRARIES = ['Redux', 'React Query', 'SWR', 'XState', 'Material-UI', 'Tailwind CSS', 'Axios'];
 
 type SearchFiltersProps = {
-  initialFilters: TutorialSearch;
-  onSearch: (filters: TutorialSearch) => void;
-  onReset: () => void;
+  initialFilters: TutorialFilters;
+  onSearch: (filters: TutorialFilters) => void;
   isLoading: boolean;
 };
 
 export default function SearchFiltersComponent({
   initialFilters,
   onSearch,
-  onReset,
   isLoading,
 }: SearchFiltersProps) {
-  const { control, handleSubmit, reset } = useForm<TutorialSearch>({
+  const { control, handleSubmit, reset } = useForm<TutorialFilters>({
     defaultValues: initialFilters,
   });
 
-  const onSubmit: SubmitHandler<TutorialSearch> = data => {
+  const onSubmit: SubmitHandler<TutorialFilters> = data => {
     onSearch(data);
   };
 
@@ -43,7 +41,6 @@ export default function SearchFiltersComponent({
       frameworks: [],
       libraries: [],
     });
-    onReset();
   };
 
   return (

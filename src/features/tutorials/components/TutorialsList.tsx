@@ -17,12 +17,6 @@ export default function TutorialsList({ tutorials }: TutorialsListProps) {
     );
   }
 
-  const formatDuration = (seconds: number): string => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
-
   return (
     <Grid container spacing={3}>
       {tutorials.map(tutorial => (
@@ -40,9 +34,6 @@ export default function TutorialsList({ tutorials }: TutorialsListProps) {
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                 {tutorial.description}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                By {tutorial.creatorName} • {formatDuration(Number(tutorial.videoDuration))}
               </Typography>
               <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                 {tutorial.categories.map(category => (

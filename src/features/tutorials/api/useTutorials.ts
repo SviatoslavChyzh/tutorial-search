@@ -1,8 +1,8 @@
-import useSWR from 'swr';
-import { Tutorial, TutorialSearch } from '@/features/tutorials/schemas/tutorials';
+import { Tutorial, TutorialFilters } from '@/features/tutorials/schemas/tutorials';
 import { buildApiUrl } from '@/features/tutorials/utils/buildApiUrl';
+import useSWR from 'swr';
 
-const fetcher = async (url: string): Promise<Array<Tutorial>> => {
+const fetcher = async (url: string): Promise<{ data: Array<Tutorial> }> => {
   console.log(url);
 
   const response = await fetch('/tutorials.json');
@@ -14,11 +14,11 @@ const fetcher = async (url: string): Promise<Array<Tutorial>> => {
   return response.json();
 };
 
-export function useTutorials(filters: TutorialSearch) {
+export function useTutorials(filters: TutorialFilters) {
   const { data, error, isLoading, isValidating, mutate } = useSWR(buildApiUrl(filters), fetcher);
 
   return {
-    tutorials: data || [],
+    tutorials: data?.data || [],
     isLoading,
     isValidating,
     isError: !!error,

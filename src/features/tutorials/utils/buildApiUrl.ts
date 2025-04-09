@@ -1,6 +1,6 @@
-import { TutorialSearch } from '@/features/tutorials/schemas/tutorials';
+import { TutorialFilters } from '@/features/tutorials/schemas/tutorials';
 
-export const buildApiUrl = (filters: TutorialSearch): string => {
+export const buildApiUrl = (filters: TutorialFilters): string => {
   const queryParams = new URLSearchParams();
 
   if (filters.query) {
