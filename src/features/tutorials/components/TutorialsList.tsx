@@ -53,7 +53,7 @@ export default function TutorialsList({ tutorials }: TutorialsListProps) {
               </Box>
             </CardContent>
             <Box sx={{ p: 2, pt: 0 }}>
-              <Link to={tutorial.url} target="_blank" rel="noopener">
+              <Link to={`/tutorial/${tutorial.id}`} rel="noopener">
                 Watch Tutorial
               </Link>
             </Box>

@@ -2,12 +2,15 @@
   "data": {
     "id": 1234,
     "title": "Getting Started with React",
+    "author": "Jane Doe",
+    "readTime": 5,
     "description": "Learn the basics of React, a popular JavaScript library for building user interfaces.",
     "link": "https://reactjs.org/docs/getting-started.html",
-    "tags": [
-      "React",
-      "JavaScript",
-      "Frontend"
-    ]
+    "url": "https://www.youtube.com/embed/73Ch_EL4YVc",
+    "thumbnailUrl": "https://example.com/thumbnail.jpg",
+    "videoDuration": 300,
+    "language": "en",
+    "framework": "React",
+    "library": "XState"
   }
 }

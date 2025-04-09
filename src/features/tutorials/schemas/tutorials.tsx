@@ -17,11 +17,12 @@ export const tutorialsSchema = z.object({
   title: z.string(),
   description: z.string(),
   url: z.string().url(),
-  createdAt: z.string().datetime(),
   thumbnailUrl: z.string().url(),
   videoDuration: z.string(),
-  creatorName: z.string(),
+  author: z.string(),
   language: z.string(),
+  framework: z.string(),
+  library: z.string(),
   categories: z.array(categorySchema),
 });
 

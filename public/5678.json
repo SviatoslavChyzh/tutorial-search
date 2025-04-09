@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": 5678,
+    "title": "Understanding Redux",
+    "author": "John Smith",
+    "readTime": 10,
+    "description": "A comprehensive guide to understanding Redux, a state management library for JavaScript applications.",
+    "link": "https://redux.js.org/introduction/getting-started",
+    "url": "https://www.youtube.com/embed/SqcY0GlETPk?si=3ZC6B7RIYK_dIhGG",
+    "thumbnailUrl": "https://example.com/thumbnail.jpg",
+    "videoDuration": 300,
+    "language": "en",
+    "framework": "React",
+    "library": "XState"
+  }
+}

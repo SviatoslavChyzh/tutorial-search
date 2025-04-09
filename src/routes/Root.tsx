@@ -1,12 +1,12 @@
 import Header from '@/components/Header';
-import TutorialsSearch from '@/features/tutorials/components/TutorialsSearch';
+import { Outlet } from 'react-router';
 
 export default function RootComponent() {
   return (
     <>
       <Header />
       <main>
-        <TutorialsSearch />
+        <Outlet />
       </main>
     </>
   );

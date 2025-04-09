@@ -20,11 +20,7 @@ export default function TutorialsSearch() {
 
   return (
     <Container maxWidth="lg">
-      <Box sx={{ py: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Tutorial Search
-        </Typography>
-
+      <Box sx={{ pt: 12 }}>
         <SearchFiltersComponent
           initialFilters={filters}
           onSearch={searchTutorials}

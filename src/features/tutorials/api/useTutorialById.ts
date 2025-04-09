@@ -2,7 +2,7 @@ import { Tutorial, tutorialsSchema } from '@/features/tutorials/schemas/tutorial
 import { z } from 'zod';
 import useSWR, { Fetcher } from 'swr';
 
-async function getTutorialById(id: string) {
+async function getTutorialById(id: string): Promise<{ data: Tutorial }> {
   const response = await fetch(`/${id}.json`);
 
   if (!response.ok) {
@@ -20,13 +20,15 @@ async function getTutorialById(id: string) {
   return await response.json();
 }
 
-const fetcher: Fetcher<Tutorial, string> = id => getTutorialById(id);
+const fetcher: Fetcher<{ data: Tutorial }, string> = id => {
+  return getTutorialById(id);
+};
 
 export default function useTutorialById(id: string) {
-  const { data, isLoading, error } = useSWR('/api/tutorials?id=' + id, fetcher);
+  const { data, isLoading, error } = useSWR(id, fetcher);
 
   return {
-    tutorial: data,
+    tutorial: data?.data || null,
     isLoading,
     error,
   };

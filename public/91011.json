@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": 91011,
+    "title": "Building RESTful APIs with Express",
+    "author": "Alice Johnson",
+    "readTime": 15,
+    "description": "Learn how to build RESTful APIs using Express, a minimal and flexible Node.js web application framework.",
+    "link": "https://expressjs.com/en/starter/installing.html",
+    "url": "https://www.youtube.com/embed/-MTSQjw5DrM?si=svqPdxEjPkswvoiW",
+    "thumbnailUrl": "https://example.com/thumbnail.jpg",
+    "videoDuration": 300,
+    "language": "en",
+    "framework": "Node.js",
+    "library": "Express"
+  }
+}
